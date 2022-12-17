@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 17:18:04 by nreyes-p          #+#    #+#             */
-/*   Updated: 2022/12/17 12:01:26 by nreyes-p         ###   ########.fr       */
+/*   Created: 2022/12/17 12:53:17 by nreyes-p          #+#    #+#             */
+/*   Updated: 2022/12/17 13:20:26 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+void *ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	size_t	i;
+	unsigned char *a;
+
+	i = 0;
+	while (i < n)
+	{
+		a = (unsigned char*)(src + i);
+		(unsigned char*)(dest + i) = a;
+		i++;
+	}
 }

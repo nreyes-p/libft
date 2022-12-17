@@ -6,11 +6,13 @@
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:56:15 by nreyes-p          #+#    #+#             */
-/*   Updated: 2022/12/15 18:04:05 by nreyes-p         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:54:51 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t strlen(const char *s)
+#include "libft.h"
+
+size_t ft_strlen(const char *s)
 {
 	size_t	i;
 
