@@ -6,7 +6,7 @@
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 18:55:35 by nreyes-p          #+#    #+#             */
-/*   Updated: 2022/12/17 12:54:45 by nreyes-p         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:27:36 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char *a;
 
-	i = 0;
-	if (!s)
+	a = s;
+	if (!a)
 		return (0);
-	while(index < n)
+	while(n)
 	{
-		(unsigned char)(s + i) = (unsigned char)c;
-		i++;
+		*(a++) = (unsigned char)c;
+		--n;
 	}
 	return (s);
 }
