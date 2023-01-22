@@ -6,11 +6,20 @@
 /*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:22:35 by tithan            #+#    #+#             */
-/*   Updated: 2023/01/22 19:00:36 by tithan           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:17:48 by tithan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_iswhitespace(char c)
+{
+	if (c == ' ' || c == '\f' || c == '\n' \
+	|| c == '\r' || c == '\t' || c == '\v')
+		return (1);
+	else
+		return (0);
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -21,7 +30,7 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	sign = 1;
-	while (nptr[i] && (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r' || nptr[i] == '\t' || nptr[i] == '\v'))
+	while (nptr[i] && ft_iswhitespace(nptr[i]))
 		i++;
 	if (nptr[i] == '-')
 	{
@@ -30,7 +39,7 @@ int	ft_atoi(const char *nptr)
 	}
 	else if (nptr[i] == '+')
 		i++;
-	while(nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		res *= 10;
 		res = res + (nptr[i] - 48);
