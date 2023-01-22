@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:15:36 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/01/22 14:20:47 by tithan           ###   ########.fr       */
+/*   Created: 2023/01/22 17:09:25 by tithan            #+#    #+#             */
+/*   Updated: 2023/01/22 18:19:13 by tithan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	dst_l;
 	size_t	i;
-	size_t	src_l;
+	size_t	n;
 
-	dst_l = ft_strlen(dest);
-	src_l = ft_strlen(src);
 	i = 0;
-	if (size)
+	n = 0;
+	if (ft_strlen(little) == 0)
+		return ((char *)big);
+	while (i < len && big[i] != '\0')
 	{
-		while (src[i] != '\0' && (i + dst_l) < (size - 1))
+		if (little[n] == big[i])
 		{
-			dest[dst_l + i] = src[i];
-			i++;
+			if (n == ft_strlen(little) - 1)
+				return ((char *)(big + i - n));
+			n++;
 		}
-		dest[dst_l + i] = '\0';
-		if (dst_l < size)
-			return (dst_l + src_l);
+		else
+			n = 0;
+		i++;
 	}
-	else
-		return (src_l);
-	return (size + src_l);
+	return (0);
 }

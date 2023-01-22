@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:15:36 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/01/22 14:20:47 by tithan           ###   ########.fr       */
+/*   Created: 2023/01/22 18:22:35 by tithan            #+#    #+#             */
+/*   Updated: 2023/01/22 19:00:36 by tithan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+int	ft_atoi(const char *nptr)
 {
-	size_t	dst_l;
-	size_t	i;
-	size_t	src_l;
+	int	i;
+	int	res;
+	int	sign;
 
-	dst_l = ft_strlen(dest);
-	src_l = ft_strlen(src);
 	i = 0;
-	if (size)
+	res = 0;
+	sign = 1;
+	while (nptr[i] && (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r' || nptr[i] == '\t' || nptr[i] == '\v'))
+		i++;
+	if (nptr[i] == '-')
 	{
-		while (src[i] != '\0' && (i + dst_l) < (size - 1))
-		{
-			dest[dst_l + i] = src[i];
-			i++;
-		}
-		dest[dst_l + i] = '\0';
-		if (dst_l < size)
-			return (dst_l + src_l);
+		sign = -1;
+		i++;
 	}
-	else
-		return (src_l);
-	return (size + src_l);
+	else if (nptr[i] == '+')
+		i++;
+	while(nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res *= 10;
+		res = res + (nptr[i] - 48);
+		i++;
+	}
+	return (res * sign);
 }

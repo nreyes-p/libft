@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 19:15:36 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/01/22 14:20:47 by tithan           ###   ########.fr       */
+/*   Created: 2023/01/22 14:28:01 by tithan            #+#    #+#             */
+/*   Updated: 2023/01/22 14:46:47 by tithan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+int	ft_toupper(int c)
 {
-	size_t	dst_l;
-	size_t	i;
-	size_t	src_l;
-
-	dst_l = ft_strlen(dest);
-	src_l = ft_strlen(src);
-	i = 0;
-	if (size)
+	if (ft_isalpha(c))
 	{
-		while (src[i] != '\0' && (i + dst_l) < (size - 1))
+		if (c >= 97 && c <= 122)
 		{
-			dest[dst_l + i] = src[i];
-			i++;
+			c = c - 32;
 		}
-		dest[dst_l + i] = '\0';
-		if (dst_l < size)
-			return (dst_l + src_l);
 	}
-	else
-		return (src_l);
-	return (size + src_l);
+	return (c);
 }
