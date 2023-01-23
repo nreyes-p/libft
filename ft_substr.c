@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 20:07:18 by tithan            #+#    #+#             */
-/*   Updated: 2023/01/22 21:52:13 by tithan           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:52:23 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
-	if (start <= ft_strlen(s) && len > 0 && len < __SIZE_MAX__)
+	subs = (char *)malloc((len + 1) * sizeof(*s));
+	/*if (start <= ft_strlen(s) && len > 0 && len < __SIZE_MAX__)
 		subs = (char *)malloc((len + 1) * sizeof(*s));
 	else if (len < 1)
 		subs = (char *)malloc(2 * sizeof(*s));
@@ -33,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{	
 		subs[0] = 0;
 		i++;
-	}
+	}*/
 	while (i < (unsigned int)len && s[start] && start <= ft_strlen(s))
 	{
 		subs[i] = s[start];
