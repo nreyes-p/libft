@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:07:18 by tithan            #+#    #+#             */
-/*   Updated: 2023/01/24 18:29:36 by nreyes-p         ###   ########.fr       */
+/*   Created: 2023/01/24 19:08:21 by nreyes-p          #+#    #+#             */
+/*   Updated: 2023/01/24 19:16:43 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*subs;
+	int		len1;
+	int		len2;
+	char	*res;
 
-	if (ft_strlen(s) < start)
-		len = 0;
-	if (start < 4294967295)
-	{
-		if (ft_strlen(s + start) < len)
-			len = ft_strlen(s + start);
-	}
-	subs = (char *)malloc((len + 1) * sizeof(*s));
-	if (subs == NULL)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	res = (char *)malloc((len1 + len2 + 1) * sizeof(*s1));
+	if (res == NULL)
 		return (0);
-	if (len != 0)
-		ft_strlcpy(subs, (s + start), (len + 1));
-	else
-		ft_strlcpy(subs, s, (len + 1));
-	return (subs);
+	ft_strlcpy(res, s1, (len1 + 1));
+	ft_strlcat(res, (char *)s2, (len1 + len2 + 1));
+	return (res);
 }
