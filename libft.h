@@ -6,7 +6,7 @@
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:05:18 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/01/24 20:02:50 by nreyes-p         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:39:56 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,13 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 
 char				**ft_split(char const *s, char c);
+
+char				*ft_itoa(int n);
+
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+void				ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+void				ft_putchar_fd(char c, int fd);
 
 #endif
