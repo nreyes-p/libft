@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:52:00 by tithan            #+#    #+#             */
-/*   Updated: 2023/01/22 19:28:13 by tithan           ###   ########.fr       */
+/*   Updated: 2023/01/27 17:05:56 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	while (*s && *s != (unsigned char)c)
 		s++;
-	if (*s == c)
+	if (*s == (unsigned char)c)
 		return ((char *)(s));
 	return (0);
 }
