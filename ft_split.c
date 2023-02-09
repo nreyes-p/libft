@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nreyes-p <nreyes-p@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:03:01 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/01/26 19:04:43 by nreyes-p         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:15:41 by nreyes-p           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	char	**res;
 
 	res = (char **)malloc((ft_getlen(s, c) + 1) * sizeof(s));
-	if (res == NULL)
+	if (!s || res == NULL)
 		return (0);
 	res = ft_dosplit(s, c, res);
 	return (res);
