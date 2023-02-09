@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:07:18 by nreyes-p            #+#    #+#             */
-/*   Updated: 2023/01/24 18:29:36 by nreyes-p         ###   ########.fr       */
+/*   Created: 2023/01/22 20:07:18 by nreyes-p          #+#    #+#             */
+/*   Updated: 2023/02/09 17:04:58 by nreyes-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (ft_strlen(s) < start)
 		len = 0;
-	if (start < 4294967295)
+	if (start < 4294967295 && len > 0)
 	{
 		if (ft_strlen(s + start) < len)
 			len = ft_strlen(s + start);
 	}
-	subs = (char *)malloc((len + 1) * sizeof(*s));
+	subs = (char *)malloc((len + 1) * sizeof(*subs));
 	if (subs == NULL)
 		return (0);
 	if (len != 0)
