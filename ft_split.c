@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nreyes-p <nreyes-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tithan <tithan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:03:01 by nreyes-p          #+#    #+#             */
-/*   Updated: 2023/02/07 19:15:41 by nreyes-p         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:38:12 by tithan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,29 @@ static int	ft_getlen(char const *s, char c)
 {
 	size_t	i;
 	int		words;
-	int		counted;
 
 	i = 0;
 	words = 0;
-	counted = 0;
-	while (i < ft_strlen(s))
+	while (i < ft_strlen(s) && s[i] != '\0')
 	{
-		if (s[i] != c && counted == 0)
+		if (s[i] == c)
+			i++;
+		else
 		{
+			while (s[i] != c && s[i] != '\0')
+				i++;
 			words++;
-			counted = 1;
 		}
-		if (s[i] == c && counted == 1)
-			counted = 0;
-		i++;
 	}
 	return (words);
 }
 
-static void	ft_freemem(char **res, size_t i)
+static void	ft_freemem(char **res, int i)
 {
 	while (i >= 0)
 	{
-		free(res[i]);
+		if (res[i])
+			free(res[i]);
 		i--;
 	}
 	free(res);
@@ -48,34 +47,27 @@ static void	ft_freemem(char **res, size_t i)
 
 static char	**ft_dosplit(char const *s, char c, char **res)
 {
-	size_t	i;
-	size_t	index;
-	int		n;
+	int	i;
+	int	n;
 
-	i = 0;
-	index = 0;
+	i = 1;
 	n = 0;
-	while (s[i] != '\0' && ft_getlen(s, c) > 0)
+	while (*s != '\0')
 	{
-		if (s[i] == c && i > 0)
+		if (*s != c)
 		{
-			if (s[i - 1] != c)
-			{
-				res[n++] = ft_substr(s, index, (i - index));
-				if (!res[n - 1])
-					ft_freemem(res, (n - 1));
-				index = i;
-			}
-		}
-		if (s[i] == c)
-			index++;
-		if (n == ft_getlen(s, c) - 1 && s[i] != c && i == ft_strlen(s) - 1)
-		{
-			res[n++] = ft_substr(s, index, (i - index + 1));
+			while (*s != c && *s != '\0' && i++ >= 0)
+				s++;
+			res[n++] = ft_substr((s - (i - 1)), 0, (i - 1));
 			if (!res[n - 1])
-					ft_freemem(res, (n - 1));
+			{
+				ft_freemem(res, (n - 1));
+				return (NULL);
+			}
+			i = 1;
 		}
-		i++;
+		else
+			s++;
 	}
 	res[n] = 0;
 	return (res);
@@ -88,8 +80,8 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	res = (char **)malloc((ft_getlen(s, c) + 1) * sizeof(s));
-	if (res == NULL)
-		return (0);
+	if (!res)
+		return (NULL);
 	res = ft_dosplit(s, c, res);
 	return (res);
 }
